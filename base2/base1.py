@@ -117,12 +117,12 @@ print(os.path.join(dirname, "a.py"))
 
 
 res = os.walk("D:\codespace\project\pythonProject")
-# for baseDir,innerDir,c in res:
-#     # print(os.path.join(baseDir,c))
-#     for item in c:
-#         print(os.path.join(baseDir,item))
+for baseDir,innerDir,c in res:
+    # print(os.path.join(baseDir,c))
+    for item in c:
+        print(os.path.join(baseDir,item))
 
-print(os.listdir("D:\codespace\project\pythonProject"))
+#print(os.listdir("D:\codespace\project\pythonProject"))
 
 
 

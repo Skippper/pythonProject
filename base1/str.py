@@ -8,10 +8,10 @@ temp = """
 print(temp)
 '''
 '''
-
+wor="this is my last {war},{a}".format(a="a",war="war")
+print(wor)
 def func():
     return 1
-
 astr = "hello javae"
 # str = str.lstrip()
 # str = str.replace("hello","world",1)
