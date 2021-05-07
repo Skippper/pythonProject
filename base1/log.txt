@@ -1,2 +1,14 @@
-davy|12|18
-dwqy|14|23
+CREATE OR REPLACE FUNCTION "edw_alo7"."is_lssn_deduc_fee"("a" varchar)
+      RETURNS "pg_catalog"."varchar" AS $BODY$
+        import json
+        a = json.loads(a)
+        try:
+            a = a['userAndPromotion']['promotion']['promotionDetails']
+            for di in a:
+              if di['detailKey'] in ['1001', '1002', '1003']:
+                return 'Y'
+        except:
+            pass
+        return 'N'
+      $BODY$
+      LANGUAGE plpythonu STABLE

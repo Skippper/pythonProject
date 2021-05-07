@@ -1,0 +1,44 @@
+emr_cluster:
+  key: 'dw_etl_cluster_id'
+  config:
+    emr_release_label: emr-5.13.0
+    applications:
+      - Hadoop
+      - Hive
+      - Sqoop
+    # ssh_key_name: becky.li
+    ssh_key_name: alo7-edw
+    # subnet_id: subnet-3c0fca4b
+    subnet_id: subnet-2f48e446
+    instance_profile: EMR_EC2_DefaultRole
+    service_role: EMR_DefaultRole
+    # service_access_security_group: sg-d9a44cbd
+    service_access_security_group: sg-0d13142ba7173a007
+    # emr_managed_master_security_group: sg-dfa44cbb
+    emr_managed_master_security_group: sg-0f4348833bab32c64
+    # emr_managed_slave_security_group: sg-d8a44cbc
+    emr_managed_slave_security_group: sg-0e59e7d19357d6847
+    cluster_name: dw_daily_job_cluster_dev
+    instance:
+      master:
+        # type: m4.2xlarge
+        type: m5.xlarge
+        bid_price: OnDemandPrice
+      core:
+        type: m4.2xlarge
+        count: 0
+      task:
+        type: m4.2xlarge
+        count: 0
+    # changes done by becky.li on 2019-03-12 to add tags for project usage track
+    tags:
+      Name: dw_daily_job_cluster_dev
+      dep: tech
+      team: edw
+      proj: etl
+      env: alpha
+      tier: backend
+    # end of changes done on 2019-03-12
+    user_config: '[{"Classification":"hdfs-site","Properties":{"dfs.replication":"1"},"Configurations":[]},{"Classification":"hadoop-env","Properties":{"HADOOP_USER_CLASSPATH_FIRST":"true"},"Configurations":[]}]'
+    bootstrap_actions: '[{"Path":"s3://alo7-dw-nx/bootstrap-actions/put-ect-key.sh","Name":"put ec2 key"}]'
+    region_name: cn-northwest-1

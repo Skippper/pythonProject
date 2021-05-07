@@ -116,11 +116,14 @@ dirname = os.path.dirname(abpath)
 print(os.path.join(dirname, "a.py"))
 
 
-res = os.walk("D:\codespace\project\pythonProject")
+print("==============")
+res = os.walk("/Users/saybot/SKipper_HOME/python/pythonProject")
 for baseDir,innerDir,c in res:
     # print(os.path.join(baseDir,c))
     for item in c:
         print(os.path.join(baseDir,item))
+        print(baseDir)
+
 
 #print(os.listdir("D:\codespace\project\pythonProject"))
 
