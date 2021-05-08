@@ -4,9 +4,9 @@ import re
 
 # 格式化文件,处理数据
 # file = pd.read_csv('/Users/saybot/Downloads/student_info (1).csv',header=1,usecols=[8])
-
-file_path = '/Users/saybot/Downloads/student_info (1).csv'
-target_path = '/Users/saybot/Downloads/process_dta.csv'
+#未脱敏的手机号脱敏 数据源例子 : (137****0860),家长(13514409198)
+file_path = 'student_info.csv'
+target_path = 'process_dta.csv'
 
 
 def process_file(file_path, target_path):
@@ -22,7 +22,7 @@ def process_file(file_path, target_path):
                            '课程名',
                            '学校名',
                            '带班教师',
-                           '历史学习总时间'
+                           '历史学习总时间',
                            '当月周在线时长',
                            '周完成率',
                            '周正确率',
@@ -59,6 +59,7 @@ def process_file(file_path, target_path):
                             res_str += '|'
                     row[8] = res_str
                 res_dict = {}
+
                 for num in range(len(field_names)):
                     res_dict[field_names[num]] = row[num]
 
